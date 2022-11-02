@@ -11,6 +11,7 @@ const AppError = require("./utils/appError");
 const globalErrorHandler = require("./controllers/errorController")
 const DB = require("./database/dbconfig");
 const bodyParser = require("body-parser");
+const sendMail = require("./controllers/RegisterUserController");
 require('dotenv').config();
 
 
@@ -33,18 +34,24 @@ app.set('view engine','ejs');
 //Load Assets
 app.use('/css', express.static(path.resolve(__dirname, "assets/css")))
 app.use('/js', express.static(path.resolve(__dirname, "assets/js")))
+app.use('/img', express.static(path.resolve(__dirname, "assets/img")))
 
 //Routes
 
 app.use("/",userRoutes);
 app.use("/:id",userRoutes);
 app.use("/",homeRoute)
+// app.use("/dashboard",homeRoute)
 
 app.get("/register",(req,res)=>{
     res.render("pages/register")
 })
 
-app.post("/register",AuthController)
+
+
+app.post("/register",AuthController.signupUser,sendMail)
+app.post("/login",AuthController.loginUser);
+
 
 app.all('*',(req,res,next)=>{
     next(new AppError(`Cant find ${req.originalUrl} on this server`,404))

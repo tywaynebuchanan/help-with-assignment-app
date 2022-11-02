@@ -1,7 +1,6 @@
 const nodemailer = require("nodemailer");
 
 
-
 const sendMail = (req,res)=>{
     const senderEmail = "devsjamaica@outlook.com"
     const name = req.body.name;
