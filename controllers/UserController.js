@@ -1,76 +1,47 @@
 const User = require("../models/userModel");
+const AppError = require("../utils/appError");
+const catchAsync = require("../utils/catchAsync")
 
-exports.getAllUsers = async (req,res,next) =>{
-    
-    try{
+exports.getAllUsers = catchAsync(async (req,res,next) =>{
         const getAllUsers = await User.find();
-        
+
+        if(!getAllUsers){
+            return next(new AppError("No results found"),404);
+        }
         res.status(200).json({
-           
             status: 'success',
             results: getAllUsers.length,
             data:{
                 getAllUsers:getAllUsers
             }
         })
+})
 
-    }catch(err){
-        res.status(400).json({
-            status: "failed",
-            message: "Could not get all users"
-        })
-    }
-   
-}
-
-exports.getUserById = async (req,res,next) =>{
-    
-    try{
+exports.getUserById = catchAsync(async (req,res,next) =>{
         const getUserById = await User.findById(req.params.id);
+        if(!getUserById){
+            return next(new AppError("No user found by that id",404));
+        }
+
         res.status(200).json({
-           
             status: 'success',
             data:{
                 getUserById:getUserById
             }
         })
+})
 
-    }catch(err){
-        res.status(400).json({
-            status: "failed",
-            message: "Could not get all users"
-        })
-    }
-   
-}
 
-exports.createUser = async(req,res,next) =>{
 
-    try{
-        const newUser = await User.create(req.body);
-        res.status(201).json({
-            status: 'success',
-            data:{
-                newUser:newUser
-            }
-        })
-
-    }catch(err){
-        res.status(400).json({
-            status: "failed",
-            message: "Unable to create the new user"
-        })
-    }
-
-}
-
-exports.updateUser = async(req,res,next) =>{
-
-    try{
+exports.updateUser = catchAsync(async(req,res,next) =>{
         const updateUser = await User.findByIdAndUpdate(req.params.id,req.body,{
             new: true,
             runValidators: true
         })
+        if(!updateUser){
+            return next(new AppError("Unable to update the user by that id",404));
+        }
+
         res.status(201).json({
             status: 'success',
             data:{
@@ -78,11 +49,5 @@ exports.updateUser = async(req,res,next) =>{
             }
         })
 
-    }catch(err){
-        res.status(400).json({
-            status: "failed",
-            message: "Unable to update the user"
-        })
-    }
 
-}
+})

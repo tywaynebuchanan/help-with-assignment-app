@@ -1,11 +1,14 @@
 const express = require("express");
 const app = express();
-const userRoute = require("./routes/userRouter");
-const auth = require("./routes/authRouter");
+//Routes
+const userRoutes = require("./routes/userRoutes");
+const homeRoute = require("./routes/homeRouter");
 const RegisterUserController = require("./controllers/RegisterUserController");
+const AuthController = require("./controllers/AuthController");
 const morgan = require("morgan");
 const path = require("path");
-const nodermailer = require("nodemailer");
+const AppError = require("./utils/appError");
+const globalErrorHandler = require("./controllers/errorController")
 const DB = require("./database/dbconfig");
 const bodyParser = require("body-parser");
 require('dotenv').config();
@@ -32,15 +35,23 @@ app.use('/css', express.static(path.resolve(__dirname, "assets/css")))
 app.use('/js', express.static(path.resolve(__dirname, "assets/js")))
 
 //Routes
-app.get("/",(req,res)=>{
-    res.render("pages/index")
-})
+
+app.use("/",userRoutes);
+app.use("/:id",userRoutes);
+app.use("/",homeRoute)
 
 app.get("/register",(req,res)=>{
     res.render("pages/register")
 })
 
+app.post("/register",AuthController)
 
-app.post("/register",RegisterUserController)
+app.all('*',(req,res,next)=>{
+    next(new AppError(`Cant find ${req.originalUrl} on this server`,404))
+})
+
+app.use(globalErrorHandler);
+
+
 
 module.exports = app;
