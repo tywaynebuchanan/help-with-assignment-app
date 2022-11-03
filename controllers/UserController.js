@@ -1,6 +1,6 @@
 const User = require("../models/userModel");
 const AppError = require("../utils/appError");
-
+const AuthController = require("../controllers/AuthController");
 const catchAsync = require("../utils/catchAsync")
 
 
@@ -33,8 +33,6 @@ exports.getUserById = catchAsync(async (req,res,next) =>{
         })
 })
 
-
-
 exports.updateUser = catchAsync(async(req,res,next) =>{
         const updateUser = await User.findByIdAndUpdate(req.params.id,req.body,{
             new: true,
@@ -53,3 +51,4 @@ exports.updateUser = catchAsync(async(req,res,next) =>{
 
 
 })
+

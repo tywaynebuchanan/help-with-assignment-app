@@ -5,5 +5,3 @@ exports.LoginPage = ((req,res)=>{
 exports.Dashboard = ((req,res)=>{
     res.render('pages/dashboard');
 })
-
-
