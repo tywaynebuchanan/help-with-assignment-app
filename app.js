@@ -11,6 +11,7 @@ const AppError = require("./utils/appError");
 const globalErrorHandler = require("./controllers/errorController")
 const DB = require("./database/dbconfig");
 const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 require('dotenv').config();
 
 
@@ -26,6 +27,7 @@ DB.once('open',()=>{
 app.use(morgan("dev"));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+app.use(cookieParser());
 
 //View Engine
 app.set('view engine','ejs');
