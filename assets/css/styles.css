@@ -26,7 +26,8 @@ h1,h2,h3,h4,h5{
 }
 
 label{
-    font-weight: 600 !important;
+    font-weight: 400 !important;
+    font-family: "Poppins",sans-serif;
 }
 
 .form-control{
