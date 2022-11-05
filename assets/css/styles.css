@@ -10,6 +10,11 @@ body{
 h1,h2,h3,h4,h5{
     font-family: "Fira Sans", sans-serif !important;
 }
+//Custom Container
+.cust-container{
+    max-width: 1100px;
+    margin: 0 auto;
+}
 
 .content{
     margin: 8%;
@@ -82,6 +87,16 @@ label{
 img.img-fluid {
     align-items: center;
     justify-content: center;
+}
+
+.alert {
+    width:100% !important;    
+ }
+
+.alert-error {
+    color: #842029;
+    background-color: #f8d7da;
+    border-color: #f5c2c7;
 }
 
 @media only screen and (min-width: 320px) and (max-width: 479px) {

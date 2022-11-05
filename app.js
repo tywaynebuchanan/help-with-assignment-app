@@ -27,6 +27,7 @@ DB.once('open',()=>{
 app.use(morgan("dev"));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+app.use(express.json({limit: '10kb'}));
 app.use(cookieParser());
 
 //View Engine

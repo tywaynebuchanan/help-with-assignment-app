@@ -50,7 +50,8 @@ exports.loginUser = catchAsync(async(req,res,next)=>{
     //if Ok then send token to user
     const token = signToken(user._id);
     res.status(200).json({
-        status: "login successful",
+        status: "success",
+        message: "Login Successful",
         token
     })
 
@@ -160,7 +161,7 @@ exports.restrictTo = (...roles) => {
           });
     
           res.status(200).json({
-            status: "Success",
+            status: "success",
             message: "Token sent to email!"
           });
 

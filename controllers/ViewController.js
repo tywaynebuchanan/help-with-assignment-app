@@ -1,5 +1,5 @@
 exports.LoginPage = ((req,res)=>{
-    res.render('pages/index');
+    res.status(200).render('pages/index');
 })
 
 exports.Dashboard = ((req,res)=>{

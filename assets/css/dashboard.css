@@ -17,6 +17,14 @@ body{
     overflow-x: hidden;
 }
 
+h1,h2,h3,h4,h5{
+    color: var(--blue);
+}
+
+th{
+    color:var(--blue);
+}
+
 .navbar-brand{
     color: var(--text-color);
     font-family: "Fira Sans", sans-serif;
@@ -103,5 +111,11 @@ form .btn-custom{
     border-color: #fff;
     outline: 0 !important;
     box-shadow: none;
+}
+
+.alert-error {
+    color: #842029;
+    background-color: #f8d7da;
+    border-color: #f5c2c7;
 }
 

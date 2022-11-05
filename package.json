@@ -6,11 +6,16 @@
   "scripts": {
     "prodstart": "NODE_ENV=production nodemon server.js",
     "devstart": "nodemon server.js",
-    "debug": "ndb server.js"
+    "debug": "ndb server.js",
+    "watch:js": "parcel watch ./assets/js/index.js --out-dir ./assets/js --out-file bundle.js",
+    "prod:js": "parcel watch ./assets/js/index.js --out-dir ./assets/js --out-file bundle.js"
   },
   "author": "Tywayne Buchanan",
   "license": "ISC",
   "dependencies": {
+    "@babel/polyfill": "^7.12.1",
+    "a": "^2.1.2",
+    "axios": "^1.1.3",
     "bcrypt": "^5.1.0",
     "body-parser": "^1.20.1",
     "cookie-parser": "^1.4.6",
@@ -26,6 +31,10 @@
     "ndb": "^1.1.5",
     "nodemailer": "^6.8.0",
     "nodemon": "^2.0.20",
+    "parcel": "^2.7.0",
     "validator": "^13.7.0"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.5"
   }
 }
