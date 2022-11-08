@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const path = require('path');
 //Routes
 const userRoutes = require("./routes/userRoutes");
 const studentRouter = require("./routes/studentRoute");
@@ -31,7 +32,9 @@ app.use(express.json({limit: '10kb'}));
 app.use(cookieParser());
 
 //View Engine
-app.set('view engine','ejs');
+// app.set('view engine','ejs');
+app.set('view engine','pug')
+app.set("views",path.join(__dirname,"views"));
 
 //Load Assets
 app.use('/css', express.static(path.resolve(__dirname, "assets/css")))
