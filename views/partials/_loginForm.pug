@@ -1,0 +1,22 @@
+.container
+    .row.content
+        .col-md-6
+            img.img-fluid.loginImg(src='img/login-page.svg' alt='image' srcset='')
+        .col-md-6
+            h3.signin-text.mb-3 Sign In
+            form.form(action='')
+                .mb-3
+                    label(for='email') Email
+                    input#email.form-control(type='email' name='email')
+                .mb-3
+                    label(for='password') Password
+                    input#password.form-control(type='password' name='password')
+                .mb-3.form-check
+                    input.form-check-input(type='checkbox' name='checkbox' id='')
+                    label(for='checkbox') Remember Me
+                .d-grid.gap-2.mx-auto
+                    button.btn.btn-class(type='submit' name='submit') Login
+                .mt-3
+                    a.btn-link(href='/register') Register
+                .mt-3
+                    a.btn-link(href='/dashboard') Login w/d creds

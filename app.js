@@ -1,6 +1,5 @@
 const express = require("express");
 const app = express();
-const path = require('path');
 //Routes
 const userRoutes = require("./routes/userRoutes");
 const studentRouter = require("./routes/studentRoute");
@@ -37,18 +36,21 @@ app.set('view engine','pug')
 app.set("views",path.join(__dirname,"views"));
 
 //Load Assets
-app.use('/css', express.static(path.resolve(__dirname, "assets/css")))
-app.use('/js', express.static(path.resolve(__dirname, "assets/js")))
-app.use('/img', express.static(path.resolve(__dirname, "assets/img")))
+app.use('/css', express.static(path.join(__dirname, "assets/css")))
+app.use('/js', express.static(path.join(__dirname, "assets/js")))
+app.use('/img', express.static(path.join(__dirname, "assets/img")))
 
 //Routes
+
 app.use("/",viewRouter);
 app.use("/",userRoutes);
 app.use("/",userRoutes);
 app.use("/students",studentRouter);
 app.use("/",studentRouter);
 
-
+app.get("/", (req,res)=>{
+    res.status(200).render("base");
+})
 app.get("/register",(req,res)=>{
     res.render("pages/register")
 })

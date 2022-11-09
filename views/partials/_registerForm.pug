@@ -1,0 +1,26 @@
+.container
+  .row.content
+    .col-md-6
+      h3.signin-text.mb-3 Register
+      form(action='/register' method='post')
+        .mb-3
+          label(for='name') Full Name
+          input#name.form-control(type='text' name='name' required='')
+        .mb-3
+          label(for='email') Email
+          input#email.form-control(type='email' name='email' required='')
+        .mb-3
+          label(for='password') Password
+          input#password.form-control(type='password' name='password' required='')
+        .mb-3
+          label(for='conpassword') Confirm Password
+          input#conpassword.form-control(type='pasword' name='conpassword' required='')
+        .mb-3.form-check
+          input.form-check-input(type='checkbox' name='checkbox' id='' required='')
+          label(for='checkbox') Terms and Conditions
+        .d-grid.gap-2.mx-auto
+          button.btn.btn-class Register
+        .mt-3
+          a.btn-link(href='/') Login
+    .col-md-6.mb-3
+      img.img-fluid.registerImg(src='img/register.png' alt='image' srcset='')
