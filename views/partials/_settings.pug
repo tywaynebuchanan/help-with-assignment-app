@@ -1,0 +1,32 @@
+.cust-container
+  .row.mt-5.mb-5
+    .col-8
+      .card
+        .card-body
+          p.card-text Personal Information
+          .cust-container__form
+            form
+              .mb-3
+                label.form-label(for='name') Full Name
+                input#name.form-control(type='text')
+              .mb-3
+                label.form-label(for='exampleInputEmail1') Email address
+                input#exampleInputEmail1.form-control(type='email' aria-describedby='emailHelp')
+              .mb-3
+                label.form-label(for='phone') Contact Number
+                input#phone.form-control(type='tel')
+              .mb-3
+                label.form-label(for='exampleInputPassword1') Password
+                input#exampleInputPassword1.form-control(type='password')
+              button.btn-custom(type='submit') Update
+    .col-4
+      .row
+        .card
+          .card-body
+            p.card-text.text-center Ready
+            // <h1 class="card-title text-center">0</h1>
+      .row.mt-2
+        .card
+          .card-body
+            p.card-text.text-center Ready
+            h1.card-title.text-center 0

@@ -1,0 +1,61 @@
+.cust-container
+  .row.mt-5.mb-5
+    .col
+      .card
+        .card-body
+          h3.card-text Payment History
+          // Drop Down
+          .dropdown.mb-2
+            button#dropdownMenuButton1.btn.btn-secondary.dropdown-toggle(type='button' data-bs-toggle='dropdown' aria-expanded='false')
+              | Select Term/Period
+            ul.dropdown-menu(aria-labelledby='dropdownMenuButton1')
+              li
+                a.dropdown-item(href='#') Term 1
+              li
+                a.dropdown-item(href='#') Term 2
+              li
+                a.dropdown-item(href='#') Term 3
+              li
+                a.dropdown-item(href='#') Summer School
+          // Drop Down
+          table.table
+            thead
+              tr
+                th(scope='col') Date
+                th(scope='col') Description
+                th(scope='col') Amount
+                th(scope='col') Method
+                th.text-center(scope='col') View Reciept
+            tbody
+              tr
+                td(scope='row')
+                  | Sept 20,2022
+                td School Fee
+                td $50,000.00
+                td Bank Logdement
+                td.text-center
+                  button.btn.btn-danger.btn-sm View
+              tr
+                td(scope='row')
+                  | Sept 21,2022
+                td Lunch - Weekly
+                td $5,000.00
+                td Bank Logdement
+                td.text-center
+                  button.btn.btn-danger.btn-sm View
+              tr
+                td(scope='row')
+                  | Sept 22,2022
+                td After Care - Weekly
+                td $5,000.00
+                td Bank Logdement
+                td.text-center
+                  button.btn.btn-danger.btn-sm View
+              tr
+                td(scope='row')
+                  | Sept 22,2022
+                td Uniforms
+                td $2,000.00
+                td Bank Logdement
+                td.text-center
+                  button.btn.btn-danger.btn-sm View

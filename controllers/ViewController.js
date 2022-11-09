@@ -3,7 +3,9 @@ exports.LoginPage = ((req,res)=>{
 })
 
 exports.Dashboard = ((req,res)=>{
-    res.render('pages/dashboard');
+    res.status(200).render('pages/dashboard',
+    {title: "Dashboard"}
+    );
 })
 
 exports.Preferences = ((req,res)=>{
