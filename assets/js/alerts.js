@@ -9,8 +9,8 @@ export const hideAlert = () =>{
 export const showAlert = (type,message)=>{
     hideAlert()
     const markup = `
-    <div class="mx-auto" style="width: 400px;">
-        <div class="alert alert-${type} m-2" role="alert" >
+    <div class="mx-auto text-center" style="width: 400px;">
+        <div class="alert alert-${type} m-2" role="alert">
             ${message}
         </div>
     </div>

@@ -48,9 +48,9 @@ app.use("/",userRoutes);
 app.use("/students",studentRouter);
 app.use("/",studentRouter);
 
-app.get("/", (req,res)=>{
-    res.status(200).render("base");
-})
+// app.get("/", (req,res)=>{
+//     res.status(200).render("base");
+// })
 app.get("/register",(req,res)=>{
     res.render("pages/register")
 })
