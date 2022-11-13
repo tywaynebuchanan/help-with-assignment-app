@@ -1,0 +1,24 @@
+nav.navbar.navbar-expand-lg.navbar-light.bg-light
+  .container-fluid
+    a.navbar-brand.fw-bold(href='#') Student Management System
+    button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+      span.navbar-toggler-icon
+    #navbarSupportedContent.collapse.navbar-collapse
+      form.d-flex.ms-auto
+        .input-group
+          input.form-control(type='text' placeholder="Search" aria-label="Search" aria-describedby='basic-addon2')
+          span#basic-addon2.input-group-text 
+            i.bi.bi-search
+      ul.navbar-nav.mb-2.mb-lg-0
+        li.nav-item.dropdown
+          a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false')
+            i.bi.bi-person
+          ul.dropdown-menu.dropdown-menu-end(aria-labelledby='navbarDropdown')
+            li
+              a.dropdown-item(href='#') Action
+            li
+              a.dropdown-item(href='#') Another action
+            li
+              hr.dropdown-divider
+            li
+              a.dropdown-item(href='#') Something else here

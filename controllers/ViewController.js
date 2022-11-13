@@ -19,3 +19,7 @@ exports.Payments = ((req,res)=>{
 exports.Child = ((req,res)=>{
     res.render('pages/child-info');
 })
+
+exports.NewDashboard = ((req,res)=>{
+    res.render('pages/newdashboard');
+})

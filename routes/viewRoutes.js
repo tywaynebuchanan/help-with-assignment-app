@@ -9,5 +9,6 @@ router.route("/dashboard").get(ViewController.Dashboard);
 router.route("/settings").get(ViewController.Preferences);
 router.route("/child-info").get(ViewController.Child);
 router.route("/payments").get(ViewController.Payments);
+router.route("/newdashboard").get(ViewController.NewDashboard);
 
 module.exports = router
