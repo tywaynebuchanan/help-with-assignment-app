@@ -3,6 +3,10 @@ const AppError = require("../utils/appError");
 const AuthController = require("../controllers/AuthController");
 const catchAsync = require("../utils/catchAsync")
 
+//Function to filter the body
+const filterObj=(obj, ...allowedFields)=>{
+
+}
 
 exports.getAllUsers = catchAsync(async (req,res,next) =>{
         const getAllUsers = await User.find();
@@ -51,4 +55,28 @@ exports.updateUser = catchAsync(async(req,res,next) =>{
 
 
 })
+
+exports.updateMe = catchAsync(async(req,res,next)=>{
+    //Create error if user post Password data
+    if(req.body.password || req.body.conpassword){
+        return next(new AppError("We are unable to update your password.",400))
+    }
+
+    //Update user information 
+    const filteredBody = filterObj(req.body,'name','email');
+    const updatedUser = await User.findByIdAndUpdate(req.user.id,filteredBody,
+        {
+            new: true,
+            runValidators: true
+        }
+        );
+
+
+    res.status(200).json({
+        status: 'success',
+
+    });
+})
+
+
 

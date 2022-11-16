@@ -13,6 +13,17 @@ const signToken = id =>{
         {expiresIn : process.env.JWTEXPIRES_IN});
 };
 
+const createSendToken = (user, statusCode,res)=>{
+  const token = signToken(user._id);
+    res.status(statusCode).json({
+        status: "Success",
+        token,
+        data:{
+            user
+        },
+    });
+}
+
 exports.signupUser = catchAsync(async(req,res,next)=>{
   
         const userSignup = await User.create({
@@ -22,14 +33,7 @@ exports.signupUser = catchAsync(async(req,res,next)=>{
         conpassword: req.body.conpassword
     });
 
-const token = signToken(userSignup._id);
-    res.status(201).json({
-        status: "Success",
-        token,
-        data:{
-            userSignup: userSignup
-        },
-    });
+    createSendToken(userSignup,201,res);
 })
 
 exports.loginUser = catchAsync(async(req,res,next)=>{
@@ -49,12 +53,7 @@ exports.loginUser = catchAsync(async(req,res,next)=>{
     }
 
     //if Ok then send token to user
-    const token = signToken(user._id);
-    res.status(200).json({
-        status: "success",
-        message: "Login Successful",
-        token
-    })
+    createSendToken(user,200,res);
 
 })
 
@@ -137,7 +136,7 @@ exports.restrictTo = (...roles) => {
     };
   };
 
-  exports.forgetPassword = catchAsync (async (req,res,next)=>{
+exports.forgetPassword = catchAsync (async (req,res,next)=>{
     //Get user based on email
     const user = await User.findOne({email:req.body.email});
     if(!user){
@@ -178,7 +177,7 @@ exports.restrictTo = (...roles) => {
     
   })
 
-  exports.resetPassword = catchAsync(async (req,res,next)=>{
+exports.resetPassword = catchAsync(async (req,res,next)=>{
     //Get User based on Token
     const hashedToken = crypto
     .createHash("sha256")
@@ -204,12 +203,23 @@ exports.restrictTo = (...roles) => {
     //Update changedPasswrord property for the user 
 
     //Log in the user, send JWT
-    const token = signToken(user._id);
-    res.status(201).json({
-        status: "Success",
-        token,
-        data:{
-            userSignup: userSignup
-        },
-    });
+    createSendToken(user,201,res);
+})
+
+exports.updatePassword = catchAsync(async (req,res,next)=>{
+  //Get user from the collection
+  const user = await User.findById(req.user.id).select('+password');
+  
+  // Posted password is correct
+  if(!(await user.correctPassword(req.body.passwordCurrent,user.password)))
+    {
+      return next(new AppError("Your current password is wrong!",401))
+    }
+  //if the password is correct, update the password
+  user.password = req.body.password;
+  user.conpassword = req.body.conpassword;
+  await user.save();
+
+  //Log in user, send JWT
+  createSendToken(user,200,res);
 })

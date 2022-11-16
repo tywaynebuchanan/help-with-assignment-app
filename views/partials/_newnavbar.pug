@@ -1,11 +1,12 @@
 nav.navbar.navbar-expand-lg.navbar-light.bg-light
   .container-fluid
-    a.navbar-brand.fw-bold(href='#') Student Management System
+    button.navbar-toggler.me-2(type='button' data-bs-toggle='offcanvas' data-bs-target='#offcanvasExample' aria-controls='offcanvasExample')
+      span.navbar-toggler-icon(data-bs-target='#offcanvasExample')
+    a.navbar-brand.fw-bold.me-auto(href='#') Student Management System 
     button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
-      span.navbar-toggler-icon
     #navbarSupportedContent.collapse.navbar-collapse
       form.d-flex.ms-auto
-        .input-group
+        .input-group.my-3.my-lg-0
           input.form-control(type='text' placeholder="Search" aria-label="Search" aria-describedby='basic-addon2')
           span#basic-addon2.input-group-text 
             i.bi.bi-search

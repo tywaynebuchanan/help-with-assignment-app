@@ -6,15 +6,17 @@
     --text-color: #1D253B;
     --text-black: #0d1b2a;
     --blue:#003566;
+    --offcanvas-width: 250px;
+    --topNavbarHeight: 56px;
 }
 
 html{
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
 }
 body{
     background-color: var(--grey);
     font-family: "Poppins", sans-serif;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
 }
 
 h1,h2,h3,h4,h5{
@@ -117,5 +119,35 @@ form .btn-custom{
     color: #842029;
     background-color: #f8d7da;
     border-color: #f5c2c7;
+}
+
+//Dashboard Custom CSS
+
+.sidebar-nav{
+   
+}
+
+@media(min-width: 992px){
+
+    body{
+        overflow: auto !important;
+    }
+
+    .modal-backdrop{
+        display: none;
+    }
+    /* .offcanvas-body::before{
+        display: none !important;
+    } */
+
+    .offcanvas-start{
+        width:var(--offcanvas-width);
+    }
+    .sidebar-nav{
+        transform: none;
+        visibility: visible !important;
+        top:var(--topNavbarHeight);
+        height: calc(100% - var(--topNavbarHeight));
+    }
 }
 
